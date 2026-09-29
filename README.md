@@ -1,6 +1,6 @@
 # Low-Rank Image Compression via Singular Value Decomposition (SVD)
 
-> **One-Sentence Pitch:** A high-performance Python implementation that compresses 2D grayscale and 3D RGB images through low-rank matrix approximation using NumPy vectorization, tensor axis permutation, and Singular Value Decomposition (SVD) with zero explicit loops.
+>A high-performance Python implementation that compresses 2D grayscale and 3D RGB images through low-rank matrix approximation using NumPy vectorization, tensor axis permutation, and Singular Value Decomposition (SVD) with zero explicit loops.
 
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)
 [![NumPy](https://img.shields.io/badge/NumPy-Vectorized-013243.svg?logo=numpy)](https://numpy.org/)
@@ -84,8 +84,6 @@ Where:
 The optimal rank-$k$ approximation ($k < r$) minimizing the Frobenius norm error is obtained by truncating the decomposition after the first $k$ singular values:
 
 $$A_k = \sum_{i=1}^k \sigma_i u_i v_i^T = U_k \Sigma_k V_k^T$$
-
-$$\min_{\operatorname{rank}(B) \le k} \|A - B\|_F = \|A - A_k\|_F = \sqrt{\sum_{i=k+1}^r \sigma_i^2}$$
 
 ### 3. Storage Efficiency
 - **Uncompressed image:** requires storing $m \times n$ values per channel.
