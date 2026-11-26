@@ -58,7 +58,7 @@ Singular values decay exponentially. A tiny subset of singular vectors captures 
   Slice matrices $U_{:, :, :k}$, $s_{:, :k}$, and $V^T_{:, :k, :}$ dynamically for any arbitrary target rank $k \le \min(H, W)$.
 - **Dual Reconstruction Engines:**  
   1. *Course pedagogical method:* constructs block diagonal $\Sigma$ using `np.fill_diagonal` followed by 3D batched `@` matrix multiplications.  
-  2. *Production broadcast method:* computes $(U_k \odot s_k) @ V^T_k$ using NumPy broadcasting to prevent allocating large zero-padded $\Sigma$ matrices.
+  2. *Production broadcast method:* computes $(U_k \odot s_k) \mathbin{\texttt{@}} V^T_k$ using NumPy broadcasting to prevent allocating large zero-padded $\Sigma$ matrices.
 - **Precision Guarding (Floating-Point Drift):**  
   Matrix decompositions on floating-point numbers accumulate rounding variances (e.g. $-10^{-16}$ or $1.0000000002$). The engine applies `np.clip(..., 0.0, 1.0)` to eliminate visual artifacting and warnings during rendering.
 - **Automated Compression & Energy Metrics:**  
